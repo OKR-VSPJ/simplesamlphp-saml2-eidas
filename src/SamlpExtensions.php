@@ -7,9 +7,9 @@ use InvalidArgumentException;
 use OMSAML2\Chunks\EidasRequestedAttribute;
 use OMSAML2\Chunks\EidasRequestedAttributes;
 use OMSAML2\Chunks\EidasSPType;
-use SAML2\DOMDocumentFactory;
-use SAML2\Utils;
-use SAML2\XML\Chunk;
+use SimpleSAML\XML\DOMDocumentFactory;
+use SimpleSAML\SAML2\Utils;
+use SimpleSAML\XML\Chunk;
 
 /**
  * Class implementing samlp(urn:oasis:names:tc:SAML:2.0:protocol):Extensions with (http://eidas.europa.eu/saml-extensions)
@@ -17,7 +17,7 @@ use SAML2\XML\Chunk;
  *
  * @package OMSAML2
  */
-class SamlpExtensions extends Chunk
+class SamlpExtensions
 {
     const NAME_FORMAT_URI = 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri';
 
@@ -82,7 +82,6 @@ class SamlpExtensions extends Chunk
             $this->sptype = new EidasSPType();
             return;
         }
-        parent::__construct($dom);
         $this->sptype = new EidasSPType($dom->getElementsByTagNameNS(EidasSPType::NS_EIDAS, EidasSPType::LOCAL_NAME)->item(0));
         $this->requested_attributes = (new EidasRequestedAttributes($dom))->requested_attributes;
     }

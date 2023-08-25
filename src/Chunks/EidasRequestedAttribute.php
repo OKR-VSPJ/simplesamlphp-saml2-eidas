@@ -3,9 +3,9 @@
 namespace OMSAML2\Chunks;
 
 use DOMElement;
-use SAML2\XML\Chunk;
+use SimpleSAML\SAML2\XML\Chunk;
 
-class EidasRequestedAttribute extends Chunk
+class EidasRequestedAttribute
 {
 
     const NAME_FORMAT_URI = 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri';
@@ -23,7 +23,6 @@ class EidasRequestedAttribute extends Chunk
         if (empty($xml)) {
             return;
         }
-        parent::__construct($xml);
         $this->Name = $xml->attributes->getNamedItem('Name')->nodeValue;
         $isRequired = $xml->attributes->getNamedItem('isRequired');
         $this->isRequired = empty($isRequired) ? false : $isRequired->nodeValue;

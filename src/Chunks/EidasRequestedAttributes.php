@@ -3,9 +3,9 @@
 namespace OMSAML2\Chunks;
 
 use DOMElement;
-use SAML2\XML\Chunk;
+use SimpleSAML\SAML2\XML\Chunk;
 
-class EidasRequestedAttributes extends Chunk
+class EidasRequestedAttributes
 {
 
     const NS_EIDAS = 'http://eidas.europa.eu/saml-extensions';
@@ -22,7 +22,6 @@ class EidasRequestedAttributes extends Chunk
         if (empty($xml)) {
             return;
         }
-        parent::__construct($xml);
         foreach ($xml->getElementsByTagNameNS(self::NS_EIDAS, EidasRequestedAttribute::LOCAL_NAME) as $requestedAttr) {
             $this->requested_attributes[] = new EidasRequestedAttribute($requestedAttr);
         }

@@ -3,9 +3,9 @@
 namespace OMSAML2\Chunks;
 
 use DOMElement;
-use SAML2\XML\Chunk;
+use SimpleSAML\XML\Chunk;
 
-class EidasSPType extends Chunk
+class EidasSPType
 {
     const NS_EIDAS = 'http://eidas.europa.eu/saml-extensions';
     const LOCAL_NAME = 'SPType';
@@ -15,7 +15,6 @@ class EidasSPType extends Chunk
     public function __construct(?DOMElement $xml = null)
     {
         if (!empty($xml)) {
-            parent::__construct($xml);
             $this->sptype = $xml->nodeValue;
         }
     }

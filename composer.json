@@ -28,7 +28,7 @@
     "source": "https://github.com/otevrenamesta/simplesamlphp-saml2-eidas"
   },
   "require": {
-    "simplesamlphp/saml2": "^4.1",
+    "simplesamlphp/saml2": "dev-master|^4.6|^5.0",
     "ext-zlib": "*",
     "ext-dom": "*",
     "ext-openssl": "*",

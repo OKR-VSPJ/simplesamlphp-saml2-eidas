@@ -7,16 +7,19 @@ namespace OMSAML2;
 use DOMElement;
 use Exception;
 use RobRichards\XMLSecLibs\XMLSecurityKey;
-use SAML2\AuthnRequest;
-use SAML2\Compat\AbstractContainer;
-use SAML2\Compat\ContainerSingleton;
-use SAML2\Constants;
-use SAML2\DOMDocumentFactory;
-use SAML2\SignedElement;
-use SAML2\Utils;
-use SAML2\XML\md\EntityDescriptor;
-use SAML2\XML\md\IDPSSODescriptor;
-use SAML2\XML\saml\Issuer;
+use SimpleSAML\SAML2\XML\saml\AuthnContextClassRef;
+use SimpleSAML\SAML2\AuthnRequest;
+use SimpleSAML\SAML2\Compat\AbstractContainer;
+use SimpleSAML\SAML2\Compat\ContainerSingleton;
+use SimpleSAML\SAML2\XML\md\UnknownRoleDescriptor;
+use SimpleSAML\SAML2\XML\samlp\RequestedAuthnContext;
+use SimpleSAML\SAML2\Constants;
+use SimpleSAML\XML\DOMDocumentFactory;
+use SimpleSAML\SAML2\SignedElement;
+use SimpleSAML\SAML2\Utils;
+use SimpleSAML\SAML2\XML\md\EntityDescriptor;
+use SimpleSAML\SAML2\XML\md\IDPSSODescriptor;
+use SimpleSAML\SAML2\XML\saml\Issuer;
 
 /**
  * @package OMSAML2
