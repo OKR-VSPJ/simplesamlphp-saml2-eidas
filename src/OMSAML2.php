@@ -11,7 +11,6 @@ use SimpleSAML\SAML2\XML\saml\AuthnContextClassRef;
 use SimpleSAML\SAML2\AuthnRequest;
 use SimpleSAML\SAML2\Compat\AbstractContainer;
 use SimpleSAML\SAML2\Compat\ContainerSingleton;
-use SimpleSAML\SAML2\XML\md\UnknownRoleDescriptor;
 use SimpleSAML\SAML2\XML\samlp\RequestedAuthnContext;
 use SimpleSAML\SAML2\Constants;
 use SimpleSAML\XML\DOMDocumentFactory;
@@ -303,17 +302,13 @@ class OMSAML2
         ContainerSingleton::setContainer($container);
         $request = new AuthnRequest();
 
-        $issuerImpl = new Issuer();
-        $issuerImpl->setValue($issuer);
+        $issuerImpl = new Issuer($issuer);
 
         $request->setIssuer($issuerImpl);
         $request->setId($container->generateId());
         $request->setAssertionConsumerServiceURL($assertionConsumerServiceURL);
         $request->setDestination($idpLoginRedirectUrl);
-        $request->setRequestedAuthnContext([
-            'AuthnContextClassRef' => [$levelOfAssurance],
-            'Comparison' => $requestedAuthnContextComparison
-        ]);
+        $request->setRequestedAuthnContext(new RequestedAuthnContext([new AuthnContextClassRef($levelOfAssurance)], $requestedAuthnContextComparison));
 
         return $request;
     }
